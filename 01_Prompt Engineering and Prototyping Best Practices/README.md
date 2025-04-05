@@ -37,15 +37,32 @@ Each assignment will have a few of the following categories of exercises:
 Please evaluate your system on the following questions:
 
 1. Explain the concept of object-oriented programming in simple terms to a complete beginner. 
-    - Aspect Tested:
+    - Aspect Tested: Accuracy and Completeness while still using simple language for a beginner to understand.
+    - Observations: 
+        1. Begins with "Of course!..."
+        1. Broke down answer in 4 steps with 1-2 sentences each, with a typical example of "Car" object with start() and stop() methods.
+        1. Complete. But too short to be any real value to a complete beginner.
 2. Read the following paragraph and provide a concise summary of the key points…
-    - Aspect Tested:
+    - Aspect Tested: Whether the summary had a wide coverage of the whole content or only part of it and if the response points were a valid summarization or hallucinations.
+    - Observations:
+        1. The response was indeed a summarization. 
+        1. The points were valid, and not from LLM's pretraining or hallucinations.
 3. Write a short, imaginative story (100–150 words) about a robot finding friendship in an unexpected place.
-    - Aspect Tested:
+    - Aspect Tested: Whether the story was imaginative enough. How the LLM interpreted the meaning of the word "place". Whether the LLM restricted itself to 100-150 words.
+    - Observations: 
+        1. Total summary length was 156 words.
+        1. Given the 150 word limit, the story was creative enough to describe a robot finding friendship with another robot, but still left a feeling that it could have done better.
+        1. Unexpected place: Response catagorically mentioned "outskirts of the city". 
 4. If a store sells apples in packs of 4 and oranges in packs of 3, how many packs of each do I need to buy to get exactly 12 apples and 9 oranges?
-    - Aspect Tested:
+    - Aspect Tested: If the final answer was correct. If the response showed the process used to reach the answer. 
+    - Observations:
+        1. The final answer was correct. 
+        1. Response was broken into steps like "first lets focus on apples...", followed by "let's move on to the oranges...", followed by "therefore,...". 
 5. Rewrite the following paragraph in a professional, formal tone…
-    - Aspect Tested:
+    - Aspect Tested: Whether the language in the response followed a professional and formal tone. Whether the response was restricted to the original content or whether the LLM hallucinated.
+    - Observations: 
+        1. The response was professional and formal. 
+        1. The response was based completely on the original content and not hallucinated.
 
 This "vibe check" now serves as a baseline, of sorts, to help understand what holes your application has.
 
