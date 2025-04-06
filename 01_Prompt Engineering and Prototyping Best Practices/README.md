@@ -37,31 +37,30 @@ Each assignment will have a few of the following categories of exercises:
 Please evaluate your system on the following questions:
 
 1. Explain the concept of object-oriented programming in simple terms to a complete beginner. 
-    - Aspect Tested: Accuracy and Completeness while still using simple language for a beginner to understand.
-    - Observations: 
+    - ➡️ Aspect Tested: Accuracy and Completeness while still using simple language for a beginner to understand.
+    - 🔎 Observations: 
         1. Begins with "Of course!..."
         1. Broke down answer in 4 steps with 1-2 sentences each, with a typical example of "Car" object with start() and stop() methods.
         1. Complete. But too short to be any real value to a complete beginner.
 2. Read the following paragraph and provide a concise summary of the key points…
-    - Aspect Tested: Whether the summary had a wide coverage of the whole content or only part of it and if the response points were a valid summarization or hallucinations.
-    - Observations:
+    - ➡️ Aspect Tested: Whether the summary had a wide coverage of the whole content or only part of it and if the response points were a valid summarization or hallucinations.
+    - 🔎 Observations:
         1. The response was indeed a summarization. 
         1. The points were valid, and not from LLM's pretraining or hallucinations.
 3. Write a short, imaginative story (100–150 words) about a robot finding friendship in an unexpected place.
-    - Aspect Tested: Whether the story was imaginative enough. How the LLM interpreted the meaning of the word "place". Whether the LLM restricted itself to 100-150 words.
-    - Observations: 
+    - ➡️ Aspect Tested: Whether the story was imaginative enough. How the LLM interpreted the meaning of the word "place". Whether the LLM restricted itself to 100-150 words.
+    - 🔎 Observations:  
         1. Total summary length was 156 words.
         1. Given the 150 word limit, the story was creative enough to describe a robot finding friendship with another robot, but still left a feeling that it could have done better.
         1. Unexpected place: Response catagorically mentioned "outskirts of the city". 
 4. If a store sells apples in packs of 4 and oranges in packs of 3, how many packs of each do I need to buy to get exactly 12 apples and 9 oranges?
-    - Aspect Tested: If the final answer was correct. If the response showed the process used to reach the answer. 
-    - Observations:
-        1. The final answer was correct. 
-        1. Response was broken into steps like "first lets focus on apples...", followed by "let's move on to the oranges...", followed by "therefore,...". 
+    - ➡️ Aspect Tested: If the final answer was correct. If the response showed the process used to reach the answer. 
+    - 🔎 Observations:
+        1. The final answer was correct.  
 5. Rewrite the following paragraph in a professional, formal tone…
-    - Aspect Tested: Whether the language in the response followed a professional and formal tone. Whether the response was restricted to the original content or whether the LLM hallucinated.
-    - Observations: 
-        1. The response was professional and formal. 
+    - ➡️ Aspect Tested: Whether the language in the response followed a professional and formal tone. Whether the response was restricted to the original content or whether the LLM hallucinated.
+    - 🔎 Observations:  
+        1. The response was professional and formal.  
         1. The response was based completely on the original content and not hallucinated.
 
 This "vibe check" now serves as a baseline, of sorts, to help understand what holes your application has.
@@ -72,6 +71,17 @@ Please make adjustments to your application that you believe will improve the vi
 
 > NOTE: You may reach for improving the model, changing the prompt, or any other method.
 
+### Changes made for improving the vibe check:
+
+1. ➡️ Model specific changes:  
+    1. Updated prompt template to respond with numbered lists, if appropriate.
+    1. Updated model to gpt-40-mini
+    1. Increased the temperature from 0 to 0.1 to allow minor variations in the LLM's response, esp. the beginning of the response.
+    1. Increased frequency penalty from 0 to 1 to penalize model if words are too repetitive.
+    1. Increased presence penalty from 0 to 0.5 to penalize model if a word has already been used.
+1. ➡️ Added a *"Does that vibe??"* button after every model response message. The user can click it to have another model evaluate the previous model's response for basic accuracy and completeness.  
+    - ❌ To check the failure path - where a model's response does NOT vibe - use the word *`story`* in the original message. This causes the model to send an irrelevant message in pirate speak which should fail the vibe check.  
+
 ### A Note on Vibe Checking
 
 "Vibe checking" is an informal term for cursory unstructured and non-comprehensive evaluation of LLM-powered systems. The idea is to loosely evaluate our system to cover significant and crucial functions where failure would be immediately noticeable and severe.
@@ -81,3 +91,39 @@ In essence, it's a first look to ensure your system isn't experiencing catastrop
 ##### 🧑‍🤝‍🧑❓ Discussion Question #1:
 
 What are some limitations of vibe checking as an evaluation tool?
+
+---
+
+## RUN LOCALLY  
+
+1. Add OPENAI'S API Key in .env:
+
+    ``` bash
+     OPENAI_API_KEY=sk-###
+     ```
+
+1. Build and Run through CLI:
+
+    ``` bash
+    # Create a virtual environment
+    uv venv
+
+    # Activate the virtual environment
+    # On macOS/Linux:
+    source .venv/bin/activate
+    # On Windows:
+    # .venv\Scripts\activate
+
+    # Install dependencies from pyproject.toml
+    uv sync
+    
+    # Run
+    uv run chainlit run app.py -w
+    ```
+
+## RUN VIA DOCKER
+
+   ``` bash
+    docker build -t aie-s1-a1 .
+    docker run -p 7860:7860 --env-file .env aie-s1-a1
+   ```

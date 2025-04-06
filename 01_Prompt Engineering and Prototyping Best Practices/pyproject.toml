@@ -1,7 +1,7 @@
 [project]
-name = "beyond-chatgpt"
+name = "aie-s1-a1"
 version = "0.1.0"
-description = "AI Engineering Bootcamp - Step 1 -- Manu Mahendru"
+description = "AI Engineering Bootcamp - Session 1 - Activity 1 - Advanced"
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
